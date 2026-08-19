@@ -1,0 +1,14 @@
+---
+import ArticleList from '../components/ArticleList.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getArticles } from '../lib/articles';
+import { site } from '../lib/site';
+
+const articles = await getArticles();
+---
+
+<BaseLayout>
+  <p class="lede">{site.description}</p>
+
+  {articles.length > 0 ? <ArticleList articles={articles} /> : <p class="meta">No articles yet.</p>}
+</BaseLayout>

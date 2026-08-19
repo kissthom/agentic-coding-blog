@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import { site } from '../lib/site';
+import { url } from '../lib/url';
+
+interface Props {
+  /** Page title, shown in <title> before the site name. Omit on the home page. */
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description } = Astro.props;
+const documentTitle = title ? `${title} — ${site.title}` : site.title;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <p class="site-header__title"><a href={url('/')}>{site.title}</a></p>
+        <nav class="site-header__nav">
+          <a href={url('/')}>Articles</a> · <a href={url('/tags/')}>Tags</a>
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <p>{site.title} — internal notes.</p>
+      </footer>
+    </div>
+  </body>
+</html>

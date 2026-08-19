@@ -1,0 +1,30 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ArticleList from '../../components/ArticleList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getArticles, getTags } from '../../lib/articles';
+import { tagSlug } from '../../lib/url';
+
+export const getStaticPaths = (async () => {
+  const [articles, tags] = await Promise.all([getArticles(), getTags()]);
+
+  return tags.map(({ tag }) => ({
+    params: { tag: tagSlug(tag) },
+    props: {
+      tag,
+      articles: articles.filter((article) => article.data.tags.includes(tag)),
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { tag, articles } = Astro.props;
+---
+
+<BaseLayout title={`Tagged “${tag}”`} description={`Articles tagged ${tag}.`}>
+  <h1 class="page-title">Tagged “{tag}”</h1>
+  <p class="lede">
+    {articles.length} article{articles.length === 1 ? '' : 's'}.
+  </p>
+
+  <ArticleList articles={articles} />
+</BaseLayout>

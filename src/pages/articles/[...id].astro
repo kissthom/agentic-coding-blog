@@ -1,0 +1,56 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import TagList from '../../components/TagList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getArticles } from '../../lib/articles';
+
+export const getStaticPaths = (async () => {
+  const articles = await getArticles();
+
+  return articles.map((article) => ({
+    params: { id: article.id },
+    props: { article },
+  }));
+}) satisfies GetStaticPaths;
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+
+<BaseLayout title={article.data.title} description={article.data.description}>
+  <article>
+    <header class="article-header">
+      {
+        article.data.series && (
+          <p class="article-header__series">
+            {article.data.series}
+            {article.data.seriesOrder && <> — part {article.data.seriesOrder}</>}
+          </p>
+        )
+      }
+
+      <h1 class="article-header__title">
+        {article.data.title}
+        {
+          article.data.draft && (
+            <>
+              {' '}
+              <span class="badge-draft">Draft</span>
+            </>
+          )
+        }
+      </h1>
+
+      <div class="article-header__meta">
+        <p class="meta"><FormattedDate date={article.data.publishDate} /></p>
+        <TagList tags={article.data.tags} />
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

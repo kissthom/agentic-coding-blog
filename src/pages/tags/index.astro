@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTags } from '../../lib/articles';
+import { tagSlug, url } from '../../lib/url';
+
+const tags = await getTags();
+---
+
+<BaseLayout title="Tags" description="Every tag used across the articles.">
+  <h1 class="page-title">Tags</h1>
+  <p class="lede">Browse articles by topic.</p>
+
+  {
+    tags.length > 0 ? (
+      <ul class="tags" aria-label="All tags">
+        {tags.map(({ tag, count }) => (
+          <li>
+            <a href={url(`/tags/${tagSlug(tag)}/`)}>
+              {tag} ({count})
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="meta">No tags yet.</p>
+    )
+  }
+</BaseLayout>

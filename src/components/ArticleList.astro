@@ -1,0 +1,36 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import TagList from './TagList.astro';
+import type { Article } from '../lib/articles';
+import { url } from '../lib/url';
+
+interface Props {
+  articles: Article[];
+}
+
+const { articles } = Astro.props;
+---
+
+<ul class="article-list">
+  {
+    articles.map((article) => (
+      <li>
+        <p class="meta">
+          <FormattedDate date={article.data.publishDate} />
+          {article.data.series && <> · {article.data.series}</>}
+        </p>
+        <h2 class="article-item__title">
+          <a href={url(`/articles/${article.id}/`)}>{article.data.title}</a>
+          {article.data.draft && (
+            <>
+              {' '}
+              <span class="badge-draft">Draft</span>
+            </>
+          )}
+        </h2>
+        <p class="article-item__description">{article.data.description}</p>
+        <TagList tags={article.data.tags} />
+      </li>
+    ))
+  }
+</ul>
