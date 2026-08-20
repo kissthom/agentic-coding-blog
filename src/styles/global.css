@@ -1,24 +1,41 @@
 /* ---------------------------------------------------------------------------
-   Design tokens. Light theme only, deliberately few knobs.
+   Design tokens. One list for both themes: `light-dark(light, dark)` resolves
+   against the `color-scheme` in effect, so there is no second block to keep in
+   sync. `color-scheme: light dark` means "follow the OS"; the theme toggle
+   narrows it to one value on <html>, which is the whole switching mechanism.
    --------------------------------------------------------------------------- */
 :root {
+  color-scheme: light dark;
+
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 
-  --ink: #16181d;
-  --ink-muted: #5c6270;
-  --ink-faint: #878d99;
-  --rule: #e4e6ea;
-  --rule-strong: #cfd3da;
-  --surface: #ffffff;
-  --surface-sunken: #f6f7f9;
-  --accent: #1a4fd6;
+  --ink: light-dark(#16181d, #e7e9ee);
+  --ink-muted: light-dark(#5c6270, #a3aab8);
+  --ink-faint: light-dark(#878d99, #7c8494);
+  --rule: light-dark(#e4e6ea, #272b33);
+  --rule-strong: light-dark(#cfd3da, #3b414c);
+  --surface: light-dark(#ffffff, #14161a);
+  --surface-sunken: light-dark(#f6f7f9, #1c1f25);
+  --accent: light-dark(#1a4fd6, #8fb4ff);
+
+  --draft-border: light-dark(#d9b400, #6d5c12);
+  --draft-surface: light-dark(#fff8db, #2a2409);
+  --draft-ink: light-dark(#7a5d00, #d9bf62);
 
   --measure: 68ch;
   --page-max: 46rem;
   --space: 1rem;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 /* ---------------------------------------------------------------------------
@@ -176,15 +193,31 @@ main {
 .badge-draft {
   display: inline-block;
   padding: 0 0.4rem;
-  border: 1px solid #d9b400;
+  border: 1px solid var(--draft-border);
   border-radius: 3px;
-  background: #fff8db;
-  color: #7a5d00;
+  background: var(--draft-surface);
+  color: var(--draft-ink);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   vertical-align: 0.15em;
+}
+
+.theme-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 0.9375rem;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
 /* ---------------------------------------------------------------------------
@@ -321,6 +354,20 @@ main {
   background: var(--surface-sunken);
   font-family: var(--font-mono);
   font-size: 0.875em;
+}
+
+/* Shiki emits both themes as CSS variables (see `shikiConfig` in astro.config.mjs)
+   and these rules pick one. The github-light/github-dark pair is colour-only — it
+   emits no `--shiki-*-font-style`/`-font-weight`/`-text-decoration`, which is what
+   keeps this to `light-dark()`, a function that accepts colours and nothing else.
+   A theme that italicises comments would need per-scheme rules for those. */
+.prose .astro-code,
+.prose .astro-code span {
+  color: light-dark(var(--shiki-light), var(--shiki-dark));
+}
+
+.prose .astro-code {
+  background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
 }
 
 .prose pre {

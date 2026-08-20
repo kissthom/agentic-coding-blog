@@ -62,11 +62,22 @@ slug → params but filters articles by the raw tag, so the two must stay paired
 articles), `articles/[...id].astro` (rest param, matches the loader id), `tags/index.astro`
 and `tags/[tag].astro`.
 
-**Styling** lives entirely in `src/styles/global.css` — one file, design tokens at the top,
-light theme only. There are no `<style>` blocks in any component; add class names there and
-rules to `global.css` rather than introducing scoped styles. `BaseLayout.astro` imports the
+**Styling** lives entirely in `src/styles/global.css` — one file, design tokens at the top.
+There are no `<style>` blocks in any component; add class names there and rules to
+`global.css` rather than introducing scoped styles. `BaseLayout.astro` imports the
 stylesheet and owns `<head>`, header, and footer; site title/description come from
 `src/lib/site.ts`.
+
+**Theming.** Both themes come from one token list: every colour token is
+`light-dark(<light>, <dark>)`, resolved against the `color-scheme` on `:root`. So a new
+colour needs one declaration, not a second dark block — but it must be a _colour_,
+since `light-dark()` accepts nothing else. `color-scheme: light dark` follows the OS;
+`ThemeToggle.astro` narrows it by setting `<html data-theme="light|dark">` and storing
+the choice in `localStorage.theme`. An `is:inline` script in `BaseLayout`'s `<head>`
+re-applies that before first paint — keep it inline and in `<head>`, or the wrong theme
+flashes. Code blocks follow the same switch: `shikiConfig` emits `github-light` and
+`github-dark` as `--shiki-light*`/`--shiki-dark*` variables with `defaultColor: false`,
+and `.astro-code` rules pick one.
 
 ## Conventions
 

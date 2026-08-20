@@ -1,0 +1,37 @@
+---
+// Light/dark switch. The stored choice lives in localStorage under `theme` and is
+// applied to <html data-theme> by the inline script in BaseLayout's <head>, which
+// runs before first paint. With nothing stored the site follows the OS.
+//
+// `is:inline` keeps both scripts out of Astro's bundle so they run during parse,
+// with no module round-trip and no flash of the wrong theme.
+---
+
+<button class="theme-toggle" type="button" data-theme-toggle>Dark</button>
+
+<script is:inline>
+  (() => {
+    const button = document.querySelector('[data-theme-toggle]');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const current = () =>
+      document.documentElement.dataset.theme ?? (prefersDark.matches ? 'dark' : 'light');
+
+    const label = () => {
+      const next = current() === 'dark' ? 'Light' : 'Dark';
+      button.textContent = next;
+      button.setAttribute('aria-label', `Switch to ${next.toLowerCase()} theme`);
+    };
+
+    button.addEventListener('click', () => {
+      const next = current() === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      label();
+    });
+
+    // Keep the label honest when the OS flips and no explicit choice is stored.
+    prefersDark.addEventListener('change', label);
+    label();
+  })();
+</script>

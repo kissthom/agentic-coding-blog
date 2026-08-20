@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { site } from '../lib/site';
 import { url } from '../lib/url';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 interface Props {
   /** Page title, shown in <title> before the site name. Omit on the home page. */
@@ -22,13 +23,22 @@ const documentTitle = title ? `${title} — ${site.title}` : site.title;
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <script is:inline>
+      // Applies a stored theme choice before first paint, so switching does not
+      // flash the other theme. No stored choice means `color-scheme: light dark`
+      // in global.css keeps following the OS.
+      const stored = localStorage.getItem('theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script>
   </head>
   <body>
     <div class="page">
       <header class="site-header">
         <p class="site-header__title"><a href={url('/')}>{site.title}</a></p>
         <nav class="site-header__nav">
-          <a href={url('/')}>Articles</a> · <a href={url('/tags/')}>Tags</a>
+          <a href={url('/')}>Articles</a> · <a href={url('/tags/')}>Tags</a> · <ThemeToggle />
         </nav>
       </header>
 

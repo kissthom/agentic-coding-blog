@@ -19,7 +19,14 @@ export default defineConfig({
 
   markdown: {
     shikiConfig: {
-      theme: 'github-light',
+      // Both themes are emitted as CSS variables (`--shiki-light*`/`--shiki-dark*`)
+      // and picked in `global.css`; `defaultColor: false` stops Shiki from also
+      // inlining one of them as a plain colour, which would win over the toggle.
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      defaultColor: false,
       wrap: false,
     },
   },
