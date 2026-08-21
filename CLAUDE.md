@@ -85,3 +85,4 @@ and `.astro-code` rules pick one.
 - Tags are lowercase-kebab.
 - Cross-article links use relative paths (`../other-article/`) so they survive a base path.
 - Astro's TS config is `strict`; pages type `getStaticPaths` with `satisfies GetStaticPaths`.
+- Commit straight to `master` — this is a single-author site, so do not branch or open MRs.
