@@ -18,7 +18,7 @@ So, let's start there.
 
 ## Agents. Agents everywhere.
 
-<!-- TODO: GIF — The Matrix Reloaded, a ridiculous number of Agent Smiths entering the square to fight Neo -->
+![A crowd of identical Agent Smiths in the rain, closing in from every direction](./images/smith-swarm.webp)
 
 Agents are everywhere nowadays. And they are pretty powerful.
 
@@ -60,7 +60,11 @@ results and take multiple steps towards a goal.
 
 And then there are **coding agents**.
 
-<!-- TODO: GIF/image — Agent Smith in a hoodie, furiously hacking on a laptop 😎 -->
+<div class="image-float">
+
+![Agent Smith in a hoodie, hunched over a laptop, typing into a wall of falling green code](./images/smith-hacker.png)
+
+</div>
 
 Coding agents are specialized for one particular world: **software development**.
 
