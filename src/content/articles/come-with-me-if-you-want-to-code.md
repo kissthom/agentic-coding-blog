@@ -54,6 +54,11 @@ not complete. Over the next few weeks, I'll share things about context
 management, memory files, skills, commands, workflows, probably MCPs, and who
 knows what else.
 
+One thing to note up front: I'll focus on Claude Code, simply because that's the
+one I use, and so do most of you. But the main concepts are the same everywhere,
+and most of the Claude Code specific things have their counterpart in the other
+agents too — so it should be useful no matter which one you're using.
+
 Considering the pace of change in this world, it may even happen that something
 on this list is already outdated by the time we get there. :)
 
@@ -61,6 +66,7 @@ It's gonna be great — stay tuned!
 
 ![The T-800 reaching over to pull John Connor along — the robot as an ally, not a threat](./images/t800-pulling-john-to-bike.webp)
 
-The first topic will be **context**, and it's coming really soon.
+The first topic will be **what coding agents actually are**, and it's coming
+really soon.
 
 Tamas
