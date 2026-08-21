@@ -15,6 +15,12 @@ I'd like to start something new today.
 I definitely won't surprise you if I say that lately, everything is about AI and
 coding agents in the land of software development.
 
+<div class="image-float">
+
+![The T-800 in the Terminator 2 corridor: "Come with me if you want to live."](./images/come-with-me.png)
+
+</div>
+
 We at andromeda already use them too — some of us more, some of us not that much
 yet. But they're definitely here, so we'd better learn to work with them.
 

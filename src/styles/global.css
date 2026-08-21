@@ -348,6 +348,34 @@ main {
   border-radius: 4px;
 }
 
+/* An image floated beside a paragraph. Authored in Markdown as a `<div>` wrapper
+   with a blank line around the image, so remark still parses the `![]()` and Astro
+   keeps processing/hashing the asset. Below `--measure` there is no room for two
+   columns, so the float is dropped and the image goes full width. */
+.prose .image-float {
+  float: right;
+  width: 15rem;
+  max-width: 45%;
+  margin: 0.35em 0 1em 1.5em;
+}
+
+/* `.prose > * + *` does not reach inside the wrapper, and remark leaves the image
+   in a `<p>` whose UA margin would otherwise offset it from the paragraph beside it. */
+.prose .image-float p {
+  margin: 0;
+}
+
+.prose .image-float img {
+  width: 100%;
+}
+
+/* Headings start a fresh block rather than wrapping around a still-floating image. */
+.prose h2,
+.prose h3,
+.prose h4 {
+  clear: both;
+}
+
 .prose code {
   padding: 0.1em 0.35em;
   border-radius: 3px;
@@ -415,6 +443,13 @@ main {
 @media (max-width: 34rem) {
   body {
     font-size: 1rem;
+  }
+
+  .prose .image-float {
+    float: none;
+    width: auto;
+    max-width: 100%;
+    margin: 0;
   }
 
   .site-header {
