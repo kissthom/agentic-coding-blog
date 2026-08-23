@@ -1,5 +1,5 @@
 ---
-title: '#1 — Agents, Agents Everywhere'
+title: 'Agents, Agents Everywhere'
 description: 'Before we talk about working with coding agents, a shared mental model of what an agent actually is: a model, instructions, tools, and a loop.'
 publishDate: 2026-08-21
 tags:
