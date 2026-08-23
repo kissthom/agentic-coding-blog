@@ -30,7 +30,7 @@ asynchronous.
 
 ## What this is
 
-What I'm starting now is a kind of letter/article format where I'll address one
+What I'm starting now is a kind of article format where I'll address one
 topic at a time related to working with coding agents. I'm going to share my
 knowledge and my own experiences working with these robots, which I'm sure some
 of you will find useful and applicable in your daily work.
@@ -64,7 +64,7 @@ on this list is already outdated by the time we get there. :)
 
 It's gonna be great — stay tuned!
 
-![The T-800 reaching over to pull John Connor along — the robot as an ally, not a threat](./images/t800-pulling-john-to-bike.webp)
+![The T-800 on his Harley, labelled "AI agent", reaching over to pull John Connor, labelled "developer", along on his dirt bike](./images/come-with-me-bikes.png)
 
 The first topic will be **what coding agents actually are**, and it's coming
 really soon.
