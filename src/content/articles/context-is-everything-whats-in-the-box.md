@@ -28,6 +28,28 @@ And with the rise of agents, something else has moved more and more into focus:
 
 ![The Distracted Boyfriend meme: the boyfriend turning away from his girlfriend, labelled "Prompt Engineering", to stare at a passer-by labelled "Context Engineering"](./images/distracted-boyfriend.png)
 
+## Why does it matter?
+
+This might all feel a bit theoretical so far.
+
+Nice mental model — but where's the practical part?
+
+Here's the thing: in the end, what we actually care about is **the code that
+comes out**.
+
+And the quality, correctness and completeness of that code depend heavily on the
+context it was written in.
+
+Good context tends to mean good code: correct, complete, and looking like it
+belongs in the project.
+
+Bad context tends to mean the opposite — strange solutions, code that ignores
+what's already there, missing pieces, and sometimes plain bugs.
+
+So context isn't just an interesting detail about how these models work.
+
+It's one of the main things standing between us and the code we actually wanted.
+
 ## So, what is context?
 
 When you start Claude Code — whether in your terminal or through your IDE — you
