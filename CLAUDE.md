@@ -31,8 +31,15 @@ verification loop; the content schema turns frontmatter mistakes into build fail
 `tsconfig.json` includes it. After a fresh clone, editor/TS errors about `astro:content`
 just mean nothing has generated it yet — run `npm run check`, `dev`, or `build` once.
 
-To build for a sub-path (e.g. GitLab Pages project pages):
-`BASE_PATH=/your-project-name npm run build`.
+To build for a sub-path (e.g. GitHub Pages project pages):
+`BASE_PATH=/your-project-name npm run build`. `SITE_URL` sets Astro's `site`.
+
+**Deployment.** `.github/workflows/deploy.yml` builds on every push to `master`
+and publishes with `actions/deploy-pages` (Pages source must be set to "GitHub
+Actions" in the repository settings). `actions/configure-pages` supplies
+`BASE_PATH`/`SITE_URL`, so the repo name is not hard-coded — do not add it to
+`astro.config.mjs`. The workflow runs `npm run check` before `npm run build`,
+so a type error fails the deploy.
 
 ## Architecture
 

@@ -146,7 +146,7 @@ See [context rot](../context-is-everything-2-context-rot/).
 The site defaults to being served from `/`, but nothing assumes it. All internal
 links go through `url()` in `src/lib/url.ts`, which applies Astro's `base`.
 
-To build for a sub-path (e.g. GitLab Pages project pages):
+To build for a sub-path (e.g. GitHub Pages project pages):
 
 ```bash
 BASE_PATH=/your-project-name npm run build
@@ -154,7 +154,25 @@ BASE_PATH=/your-project-name npm run build
 
 `dist/` is then ready to be served at `https://<host>/your-project-name/`.
 
-Deployment, CI, analytics, and comments are intentionally not configured here.
+## Deploying to GitHub Pages
+
+`.github/workflows/deploy.yml` builds and publishes the site on every push to
+`master` (and on demand via **Actions → Deploy to GitHub Pages → Run workflow**).
+
+One-time setup after pushing the repository to GitHub:
+
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
+   Without this the workflow's deploy step fails; there is nothing else to
+   configure and no `gh-pages` branch is involved.
+2. Push to `master`. The first run publishes to
+   `https://<user>.github.io/<repo>/`.
+
+The repository name is never hard-coded. `actions/configure-pages` reports the
+correct `base_path` and origin, and the workflow passes them to the build as
+`BASE_PATH` and `SITE_URL`, so the same workflow works unchanged for a project
+site (`/<repo>/`) and for a user site (`<user>.github.io`, base `/`).
+
+Analytics and comments are intentionally not configured here.
 
 ## Changing the site title or description
 
