@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import ImageLightbox from '../../components/ImageLightbox.astro';
 import TagList from '../../components/TagList.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getArticles } from '../../lib/articles';
@@ -53,4 +54,6 @@ const { Content } = await render(article);
       <Content />
     </div>
   </article>
+
+  <ImageLightbox />
 </BaseLayout>

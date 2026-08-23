@@ -1,0 +1,51 @@
+---
+// Click-to-enlarge for images in rendered Markdown.
+//
+// The script wraps every `.prose img` in a button at runtime, so articles keep
+// writing plain `![alt](./images/x.png)` and Astro keeps processing the asset.
+// Without JS nothing is wrapped and the images simply stay static — there is no
+// link to leave dangling.
+//
+// The overlay is a native <dialog>: `showModal()` brings Esc-to-close, the
+// backdrop and the focus trap with it, so none of that is reimplemented here.
+//
+// `is:inline` matches ThemeToggle — this site ships no script bundle.
+---
+
+<dialog class="lightbox" data-lightbox>
+  <img class="lightbox__image" data-lightbox-image src="" alt="" />
+</dialog>
+
+<script is:inline>
+  (() => {
+    const dialog = document.querySelector('[data-lightbox]');
+    const full = dialog.querySelector('[data-lightbox-image]');
+
+    for (const image of document.querySelectorAll('.prose img')) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'zoom';
+      button.title = 'View larger';
+
+      image.replaceWith(button);
+      button.append(image);
+
+      button.addEventListener('click', () => {
+        // `currentSrc` is what the browser actually picked, srcset included.
+        full.src = image.currentSrc || image.src;
+        full.alt = image.alt;
+        dialog.showModal();
+      });
+    }
+
+    // The dialog is the full viewport and holds nothing but the image, so any
+    // click inside it — backdrop or image — means "done looking".
+    dialog.addEventListener('click', () => dialog.close());
+
+    // Drop the source once closed so a stale image never flashes on reopen.
+    dialog.addEventListener('close', () => {
+      full.removeAttribute('src');
+      full.alt = '';
+    });
+  })();
+</script>
