@@ -1,11 +1,11 @@
 ---
 title: 'Context is Everything #3 — Context Hygiene'
 description: 'Two moves stand between you and a rotten session: clear and compact. What each one actually does, when to use which, and why writing things down beats both.'
-publishDate: 2026-08-28
+publishDate: 2026-09-05
 tags:
   - coding-agents
   - context
-draft: false
+draft: true
 ---
 
 So now we know what context is, why it has such a central role, and how to

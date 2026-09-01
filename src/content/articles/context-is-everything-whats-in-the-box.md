@@ -1,11 +1,11 @@
 ---
 title: "Context is Everything #1 — What's in the Box?"
 description: 'Prompt engineering is no longer the whole game. A first look at what a coding agent actually keeps in its context — and how fast that pile grows.'
-publishDate: 2026-08-26
+publishDate: 2026-09-03
 tags:
   - coding-agents
   - context
-draft: false
+draft: true
 ---
 
 For quite a while, **prompt engineering** was everywhere.

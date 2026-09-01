@@ -1,11 +1,11 @@
 ---
 title: 'Agents, Agents Everywhere'
 description: 'Before we talk about working with coding agents, a shared mental model of what an agent actually is: a model, instructions, tools, and a loop.'
-publishDate: 2026-08-25
+publishDate: 2026-09-02
 tags:
   - coding-agents
   - fundamentals
-draft: false
+draft: true
 ---
 
 I originally wanted to start this series with **context and context

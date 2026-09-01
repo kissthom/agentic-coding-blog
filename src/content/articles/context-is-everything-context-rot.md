@@ -1,11 +1,11 @@
 ---
 title: 'Context is Everything #2 — Context Rot'
 description: 'More context does not mean a smarter agent. What context rot is, why it creeps in, and how to notice your session going bad.'
-publishDate: 2026-08-27
+publishDate: 2026-09-04
 tags:
   - coding-agents
   - context
-draft: false
+draft: true
 ---
 
 Have you ever asked someone a really simple question like:

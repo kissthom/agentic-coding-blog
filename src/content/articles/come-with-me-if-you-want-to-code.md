@@ -1,7 +1,7 @@
 ---
 title: 'Come with me if you want to code'
 description: 'Announcing a short, asynchronous letter series about coding agents — and why it is worth making friends with them.'
-publishDate: 2026-08-24
+publishDate: 2026-09-01
 tags:
   - coding-agents
   - announcements
