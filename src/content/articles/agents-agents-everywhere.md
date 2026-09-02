@@ -5,7 +5,7 @@ publishDate: 2026-09-02
 tags:
   - coding-agents
   - fundamentals
-draft: true
+draft: false
 ---
 
 I originally wanted to start this series with **context and context
