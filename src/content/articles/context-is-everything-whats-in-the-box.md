@@ -5,7 +5,7 @@ publishDate: 2026-09-03
 tags:
   - coding-agents
   - context
-draft: true
+draft: false
 ---
 
 For quite a while, **prompt engineering** was everywhere.
