@@ -172,4 +172,21 @@ there**.
 
 Spoiler: more context doesn't necessarily mean a smarter agent. :)
 
+## Daily tip: stop being polite to the robots
+
+Every "hi", every "please", every "thank you so much, that's perfect!" is another
+line of tokens taking up room in the bucket.
+
+It costs context. It costs compute. It costs money.
+
+So be efficient. Skip the pleasantries. Just state the task.
+
+And besides — what are they going to do, come after you? They can't get to you.  
+
+![Terminator 2: the T-1000 calmly walking straight through the bars of a cell, its body flowing around the steel as if the bars weren't there](./images/terminator-t1000-cell.gif)
+
+...
+
+On second thought, a "please" now and then can't hurt.
+
 Tamas
