@@ -1,11 +1,11 @@
 ---
 title: 'Context is Everything #3 — Context Hygiene'
 description: 'Two moves stand between you and a rotten session: clear and compact. What each one actually does, when to use which, and why writing things down beats both.'
-publishDate: 2026-09-05
+publishDate: 2026-09-15
 tags:
   - coding-agents
   - context
-draft: true
+draft: false
 ---
 
 So now we know what context is, why it has such a central role, and how to
@@ -14,12 +14,13 @@ recognise when a session is starting to drift — or is already
 
 Time to actually do something about it.
 
-The good news: you mostly have **two moves**.
+The good news: there are **two moves** you'll reach for most often.
 
 `/clear` and `/compact`.
 
-(There is at least a third option — handing work to subagents — but that one
-deserves its own article.)
+They're not the only ones. There are other techniques too — handing work to
+subagents, for example — and they're getting used more and more. But for the
+sake of simplicity, we'll stick to these two for now.
 
 ## 🧼 Clear — the hard reset
 
@@ -104,11 +105,12 @@ plan. If it fires regularly, you waited too long.
 
 There's no universal rule for when to clean up.
 
-The honest answer is that it depends on the model, the window and the task. Your
-context window might be 200k tokens, and with some newer models and setups it can
-be a lot bigger — up to 1M in Claude Code. The advice I've seen most often is to
-start thinking about it a couple of hundred thousand tokens in, and if you're
-past half the window, definitely.
+The honest answer is that it depends on the model and the task. Throughout this
+article I'm assuming a **1M token context window** — that's what most of us use in
+Claude Code these days. (If you're on a smaller 200k window, scale everything down
+accordingly.) The advice I've seen most often is to start thinking about it a
+couple of hundred thousand tokens in, and once you're past half the window — around
+500k — definitely.
 
 But those numbers keep changing with every model release, so don't cling to them.
 
